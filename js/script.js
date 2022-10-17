@@ -16,7 +16,7 @@ function nuevoProspecto() {
 
 function calcularFondos() {
 
-    for (let i = 1; i <= prospecto.meses(); i++) {
+    for (let i = 1; i <= prospecto.getMeses(); i++) {
 
         if (i <= 1) {
             fondo = prospecto.aporte
@@ -39,7 +39,7 @@ function busquedaSellado() {
 }
 
 function mensaje() {
-    alert(prospecto.nombre + " cuando tengas " + prospecto.edadRetiro() + " podrás retirarte con " + fondo.toFixed(2) +
+    alert(prospecto.nombre + " cuando tengas " + prospecto.getEdadRetiro() + " podrás retirarte con " + fondo.toFixed(2) +
         "\nRecuerda que el débito de la primer cuota será de " + sellado.toFixed(2) + " debido a los costos de sellado de tu provincia");
 }
 

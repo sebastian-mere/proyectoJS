@@ -6,17 +6,19 @@ class Prospecto {
         this.aporte = parseInt(aporte);
         this.anios = parseInt(anios);
         this.provincia = provincia.toLowerCase();
+        this.meses = (this.anios * 12);
+        this.edadRetiro = (this.edad + this.anios);
     }
 
     getProvincia(){
         return this.provincia;
     }
 
-    meses(){
-        return (this.anios * 12);
+    getMeses(){
+        return this.meses;
     }
 
-    edadRetiro(){
-        return (this.edad + this.anios);
+    getEdadRetiro(){
+        return this.edadRetiro;
     }
 }
