@@ -1,46 +1,54 @@
-let nombre = prompt("Ingresa tu nombre");
-let edad = parseInt(prompt("Ingresa tu edad"));
-let aporte = parseInt(prompt("¿Cuánto podrías destinar a tu retiro por mes?"));
-let anios = parseInt(prompt("¿En cuántos años querrías retirarte?"));
-let provincia = prompt("Por último, ingresa la provincia de residencia").toLowerCase();
-
-let sellado = 0
-let edadRetiro = edad + anios;
-let meses = anios * 12;
+let prospecto
+let sellado
 let fondo = 0;
+
+function nuevoProspecto() {
+
+    let nombre = prompt("Ingresa tu nombre");
+    let edad = parseInt(prompt("Ingresa tu edad"));
+    let aporte = parseInt(prompt("¿Cuánto podrías destinar a tu retiro por mes?"));
+    let anios = parseInt(prompt("¿En cuántos años querrías retirarte?"));
+    let provincia = prompt("Por último, ingresa la provincia de residencia").toLowerCase();
+
+    prospecto = new Prospecto (nombre, edad, aporte, anios, provincia);
+
+}
 
 function calcularFondos() {
 
-    for (let i = 1; i <= meses; i++) {
+    for (let i = 1; i <= prospecto.meses(); i++) {
 
         if (i <= 1) {
-            fondo = aporte
+            fondo = prospecto.aporte
             console.log(fondo)
         } else {
-            fondo = (fondo + aporte) * 1.008
+            fondo = (fondo + prospecto.aporte) * 1.008
             console.log(fondo)
         }
     }
 }
 
-function costoSellado() {
+function busquedaSellado() {
 
-    switch (provincia) {
-        case "entre rios": sellado = aporte * 1.5;
-            break;
+    let busqueda = selladoProvincia.find((e) => e.provincia === prospecto.getProvincia());
 
-        case "buenos aires": sellado = aporte * 1.1;
-            break;
+    sellado = busqueda.sellado + prospecto.aporte;
 
-        case "santa fe": sellado = aporte * 2.5;
-            break;
-
-        default: sellado = aporte * 1.2;
-    }
+    return sellado;
 
 }
 
-if (edad < 18) {
+function mensaje() {
+    alert(prospecto.nombre + " cuando tengas " + prospecto.edadRetiro() + " podrás retirarte con " + fondo.toFixed(2) +
+        "\nRecuerda que el débito de la primer cuota será de " + sellado.toFixed(2) + " debido a los costos de sellado de tu provincia");
+}
+
+
+
+nuevoProspecto();
+
+
+if (prospecto.edad < 18) {
 
     alert(nombre + " necesitas ser mayor de edad para poder continuar");
 
@@ -48,9 +56,8 @@ if (edad < 18) {
 
     calcularFondos();
 
-    costoSellado();
+    busquedaSellado();
 
-    alert(nombre + " cuando tengas " + edadRetiro + " podrás retirarte con " + fondo.toFixed(2) +
-        "\nRecuerda que el débito de la primer cuota será de " + sellado.toFixed(2) + " debido a los costos de sellado de tu provincia");
+    mensaje();
 
 }
