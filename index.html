@@ -1,166 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">  
-    
-    <title>Claudio Ponce - Asesor Financiero</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.js"
+        integrity="sha512-d6nObkPJgV791iTGuBoVC9Aa2iecqzJRE0Jiqvk85BhLHAPhWqkuBiQb1xz2jvuHNqHLYoN3ymPfpiB1o+Zgpw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+	<title>Claudio Ponce - Asesor Financiero</title>
 
 </head>
+
 <body>
 
-    <header class="bg-dark">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="container-fluid">
-                  <a class="navbar-brand" href="#">Claudio Ponce</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Asesoría</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </nav>
-            </div>
-    </header>
-    
-    <main>
-        <div class="container col-xxl-8 px-4 py-5">
-            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-              <div class="col-10 col-sm-8 col-lg-6">
-                <img src="img/finanzas.webp" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
-              </div>
-              <div class="col-lg-6">
-                <h1 class="display-5 fw-bold lh-1 mb-3">Lorem ipsum dolor sit amet consectetur</h1>
-                <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit explicabo, doloribus atque facilis quidem quae, ea ipsa repudiandae corrupti quis nam tempora saepe aperiam commodi dignissimos dolor veniam corporis reiciendis.</p>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                  <button type="button" class="btn btn-warning btn-lg px-4 me-md-2">Simulador Online</button>
-                  <button type="button" class="btn btn-outline-warning btn-lg px-4">Ponerse en contacto</button>
-                </div>
-              </div>
-            </div>
-        </div>
+	<header class="bg-dark">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#">Claudio Ponce</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+						aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="#">Inicio</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Asesoría</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Contacto</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
 
-        <article class="container col-xxl-8 px-4 py-5">
-            <h2>Simulador de fondo de retiro</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, itaque. Porro dicta ut impedit eos! Inventore ullam cumque odit voluptatibus ducimus porro similique quas nisi asperiores tempora, debitis sint repudiandae?</p>
-            <form>
-                <div class="form-group row py-2">
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Nombre">
-                    </div>
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Apellido">
-                    </div>
-                  </div>
-              <div class="form-group row py-2">
-                <div class="col">
-                  <input type="email" class="form-control"placeholder="Email">
-                </div>
-              </div>
-              <div class="form-group row py-2">
-                <label class="form-label">Fecha de nacimiento</label>
-                <div class="col">
-                  <input type="date" class="form-control">
-                </div>
-              </div>
-              <div class="form-group row py-2">
-                <div class="col">
-                  <input type="number" class="form-control"placeholder="Monto mensual">
-                </div>
-              </div>
-              <div class="form-group row py-2">
-                <div class="col-6">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label" for="gridCheck1">
-                      Extra 1
-                    </label>
-                  </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox">
-                      <label class="form-check-label" for="gridCheck1">
-                        Extra 2
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox">
-                      <label class="form-check-label" for="gridCheck1">
-                        Extra 3
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox">
-                      <label class="form-check-label" for="gridCheck1">
-                        Extra 4
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox">
-                      <label class="form-check-label" for="gridCheck1">
-                        Extra 5
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox">
-                      <label class="form-check-label" for="gridCheck1">
-                        Extra 6
-                      </label>
-                    </div>
-                  </div>
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-start py-4">
-                    <button type="button" class="btn btn-warning btn-lg px-4 me-md-2">Ver simulación</button>
-                  </div>
-            </article>
+	<main>
+		<div class="container col-xxl-8 px-4 py-5">
+			<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+				<div class="col-10 col-sm-8 col-lg-6">
+					<img src="img/finanzas.webp" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700"
+						height="500" loading="lazy">
+				</div>
+				<div class="col-lg-6">
+					<h1 class="display-5 fw-bold lh-1 mb-3">Lorem ipsum dolor sit amet consectetur</h1>
+					<p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit explicabo, doloribus
+						atque
+						facilis quidem quae, ea ipsa repudiandae corrupti quis nam tempora saepe aperiam commodi
+						dignissimos dolor
+						veniam corporis reiciendis.</p>
+					<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+						<button type="button" class="btn btn-warning btn-lg px-4 me-md-2">Simulador Online</button>
+						<button type="button" class="btn btn-outline-warning btn-lg px-4">Ponerse en contacto</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    </main>
+		<article class="container col-xxl-8 px-4 py-5">
+			<h2>Simulador de fondo de retiro</h2>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, itaque. Porro dicta ut impedit
+				eos!
+				Inventore ullam cumque odit voluptatibus ducimus porro similique quas nisi asperiores tempora, debitis
+				sint
+				repudiandae?</p>
+			<form>
+				<div class="form-group row py-2">
+					<div class="col">
+						<input type="text" class="form-control" placeholder="Nombre" id="nombre" required>
+					</div>
+				</div>
+				<div class="form-group row py-2">
+					<div class="col">
+						<input type="email" class="form-control" placeholder="Email" id="email" required>
+					</div>
+				</div>
+				<div class="form-group row py-2">
+					<div class="col">
+						<select class="form-select" aria-label="Selección provincia" id="provincia" required>
+							<option selected>Lugar de residencia</option>
+							<option value="buenos aires">Buenos Aires</option>
+							<option value="catamarca">Catamarca</option>
+							<option value="chaco">Chaco</option>
+							<option value="chubut">Chubut</option>
+							<option value="cordoba">Córdoba</option>
+							<option value="corrientes">Corrientes</option>
+							<option value="ciudad de buenos aires">Ciudad de Buenos Aires</option>
+							<option value="entre rios">Entre Ríos</option>
+							<option value="formosa">Formosa</option>
+							<option value="jujuy">Jujuy</option>
+							<option value="la pampa">La Pampa</option>
+							<option value="la rioja">La Rioja</option>
+							<option value="mendoza">Mendoza</option>
+							<option value="misiones">Misiones</option>
+							<option value="neuquen">Neuquén</option>
+							<option value="rio negro">Río Negro</option>
+							<option value="salta">Salta</option>
+							<option value="san juan">San Juan</option>
+							<option value="san luis">San Luis</option>
+							<option value="santa cruz">Santa Cruz</option>
+							<option value="santa fe">Santa Fé</option>
+							<option value="santiago del estero">Santiago del Estero</option>
+							<option value="tierra del fuego">Tierra del Fuego</option>
+							<option value="tucuman">Tucuman</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row py-2">
+					<div class="col">
+						<input type="number" class="form-control" placeholder="Año de nacimiento" id="anioNac" required>
+					</div>
+				</div>
+				<div class="form-group row py-2">
+					<div class="col">
+						<input type="number" class="form-control" placeholder="Aporte mensual" id="aporte" required>
+					</div>
+				</div>
+				<div class="form-group row py-2">
+					<div class="col">
+						<input type="number" class="form-control" placeholder="Años de aporte" id="anios" required>
+					</div>
+				</div>
+				<div class="d-grid gap-2 d-md-flex justify-content-md-start py-4">
+					<button type="button" class="btn btn-warning btn-lg px-4 me-md-2" id="simular">Simular
+						proyección</button>
+					<button type="button" class="btn btn-outline-warning btn-lg px-4 me-md-2" id="simular">Reiniciar
+						proyección</button>
+				</div>
+			</form>
+		</article>
+		<article id="simulacion">
+			<canvas id="myChart"></canvas>
+			<canvas id="myChart2"></canvas>
+		</article>
 
-    <footer class="bg-dark text-center text-white">
-        <div class="container p-4">
-            <section class="mb-4">
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-            </section>
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-              © 2022 Copyright
-        </div>
-    </footer>
-<script src="js/prospecto.js"></script>
-<script src="js/sellado.js"></script>
-<script src="js/script.js"></script>
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+	</main>
+
+	<footer class="bg-dark text-center text-white">
+		<div class="container p-4">
+			<section class="mb-4">
+				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+						class="fab fa-facebook-f"></i></a>
+				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+						class="fab fa-twitter"></i></a>
+				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+						class="fab fa-linkedin-in"></i></a>
+			</section>
+			<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+				© 2022 Copyright
+			</div>
+	</footer>
+
+
+	
+	<script src="js/prospecto.js"></script>
+	<script src="js/sellado.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/charts.js"></script>
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+		crossorigin="anonymous"></script>
+	
 </body>
+
 </html>

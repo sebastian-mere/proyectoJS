@@ -1,11 +1,15 @@
 class Prospecto {
-    constructor(nombre, edad, aporte, anios, provincia) {
+    constructor(nombre, email, anioNac, aporte, anios, provincia) {
 
         this.nombre = nombre;
-        this.edad = parseInt(edad);
+        this.email = email;
+        this.anioNac = parseInt(anioNac);
         this.aporte = parseInt(aporte);
         this.anios = parseInt(anios);
         this.provincia = provincia.toLowerCase();
+        
+        this.anioCorriente = new Date();
+        this.edad = (this.anioCorriente.getFullYear() - this.anioNac);
         this.meses = (this.anios * 12);
         this.edadRetiro = (this.edad + this.anios);
     }
