@@ -3,20 +3,26 @@ let sellado
 let fondo = 0;
 let sumatoriaFondo = []
 let aniosFondo = []
+let nombreTitulo = document.getElementById("nombreTitulo");
+let inversion = document.getElementById("inversion");
+let capital = document.getElementById("capital");
+let montoSellado = document.getElementById("sellado");
 
+let simular = document.getElementById("simular");
 let simulacion = document.getElementById("simulacion");
+
+
 
 function nuevoProspecto() {
 
-    let nombre = "Seba" //prompt("Ingresa tu nombre");
-    let email = "sm@gmail.com" //parseInt(prompt("Ingresa tu email"));
-    let anioNac = 2000//parseInt(prompt("año de nacimiento"));
-    let aporte = 200//parseInt(prompt("¿Cuánto podrías destinar a tu retiro por mes?"));
-    let anios = 20//parseInt(prompt("¿En cuántos años querrías retirarte?"));
-    let provincia = "buenos aires"//prompt("Por último, ingresa la provincia de residencia").toLowerCase();
-    
+    let nombre = document.getElementById("nombre").value;
+    let email = document.getElementById("email").value;
+    let provincia = document.getElementById("provincia").value;
+    let anioNac = parseInt(document.getElementById("anioNac").value);
+    let aporte = parseInt(document.getElementById("aporte").value);
+    let anios = parseInt(document.getElementById("anios").value);
 
-    prospecto = new Prospecto (nombre, email, anioNac, aporte, anios, provincia);
+    prospecto = new Prospecto(nombre, email, anioNac, aporte, anios, provincia);
 
 }
 
@@ -36,9 +42,9 @@ function calcularFondos() {
     }
 }
 
-function calcularAnios(){
+function calcularAnios() {
 
-    for (let i = 11; i <= sumatoriaFondo.length; i=i+12){
+    for (let i = 11; i <= sumatoriaFondo.length; i = i + 12) {
         aniosFondo.push(sumatoriaFondo[i])
     }
 }
@@ -53,28 +59,53 @@ function busquedaSellado() {
 
 }
 
-function mensaje() {
-    alert(prospecto.nombre + " cuando tengas " + prospecto.getEdadRetiro() + " podrás retirarte con " + fondo.toFixed(2) +
-        "\nRecuerda que el débito de la primer cuota será de " + sellado.toFixed(2) + " debido a los costos de sellado de tu provincia");
+function texto() {
+    nombreTitulo.innerHTML = prospecto.nombre;
+    inversion.innerHTML = "$ " + prospecto.aporte;
+    capital.innerHTML = "$ " + fondo.toFixed(2);
+    montoSellado.innerHTML = "$ " + sellado.toFixed(2);
+
+}
+
+function generarSimulacion() {
+    nombreTitulo.innerHTML = prospecto.nombre;
+    inversion.innerHTML = "$ " + prospecto.aporte;
+    capital.innerHTML = "$ " + fondo.toFixed(2);
+    montoSellado.innerHTML = "$ " + sellado.toFixed(2);
+    simulacion.classList.remove('d-none')
+
+        ;
+
 }
 
 
 
-nuevoProspecto();
+function validacion() {
+    
+    return true
+}
 
+simular.addEventListener("click", () => {
 
-if (prospecto.edad < 18) {
+    if (validacion()){
 
-    alert(nombre + " necesitas ser mayor de edad para poder continuar");
-
-} else {
+    nuevoProspecto();
 
     calcularFondos();
 
-    calcularAnios()
+    calcularAnios();
 
     busquedaSellado();
 
-    mensaje();
+    generarSimulacion();
 
-}
+   
+
+    } else {
+
+      alert("Ocurrió un error, vuelve a intentarlo")
+
+    }
+
+
+});

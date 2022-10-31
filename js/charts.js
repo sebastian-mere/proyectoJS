@@ -49,12 +49,7 @@ const config = {
     data: data,
     options: {
         responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                text: 'PLAN FINANCIERO PERSONAL - Nombre'
-            },
-        },
+        
         interaction: {
             intersect: false,
         },
@@ -84,12 +79,12 @@ const configDona = {
     data: dataDona,
 };
 
-const myChart = new Chart(
-    document.getElementById('myChart'),
+const curva = new Chart(
+    document.getElementById('curva'),
     config
 );
 
-const myChart2 = new Chart(
-    document.getElementById('myChart2'),
+const torta = new Chart(
+    document.getElementById('torta'),
     configDona
 );
