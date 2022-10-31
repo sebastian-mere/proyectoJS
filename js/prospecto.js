@@ -12,6 +12,7 @@ class Prospecto {
         this.edad = (this.anioCorriente.getFullYear() - this.anioNac);
         this.meses = (this.anios * 12);
         this.edadRetiro = (this.edad + this.anios);
+        this.sueldo = ((100 * this.aporte)/15)
     }
 
     getProvincia(){
@@ -24,5 +25,9 @@ class Prospecto {
 
     getEdadRetiro(){
         return this.edadRetiro;
+    }
+
+    getSueldo(){
+        return this.sueldo;
     }
 }

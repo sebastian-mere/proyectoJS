@@ -9,8 +9,8 @@ let capital = document.getElementById("capital");
 let montoSellado = document.getElementById("sellado");
 
 let simular = document.getElementById("simular");
+let reiniciar = document.getElementById("reiniciar")
 let simulacion = document.getElementById("simulacion");
-
 
 
 function nuevoProspecto() {
@@ -59,30 +59,20 @@ function busquedaSellado() {
 
 }
 
-function texto() {
-    nombreTitulo.innerHTML = prospecto.nombre;
-    inversion.innerHTML = "$ " + prospecto.aporte;
-    capital.innerHTML = "$ " + fondo.toFixed(2);
-    montoSellado.innerHTML = "$ " + sellado.toFixed(2);
-
-}
-
 function generarSimulacion() {
     nombreTitulo.innerHTML = prospecto.nombre;
     inversion.innerHTML = "$ " + prospecto.aporte;
     capital.innerHTML = "$ " + fondo.toFixed(2);
     montoSellado.innerHTML = "$ " + sellado.toFixed(2);
-    simulacion.classList.remove('d-none')
-
-        ;
-
+    datosDona.push(prospecto.aporte)
+    datosDona.push(prospecto.getSueldo())
+    DATA_COUNT = aniosFondo.length;
+    simulacion.classList.remove('d-none');
 }
 
-
-
 function validacion() {
-    
-    return true
+
+    return true;
 }
 
 simular.addEventListener("click", () => {
@@ -99,13 +89,28 @@ simular.addEventListener("click", () => {
 
     generarSimulacion();
 
-   
+    dataCount();
 
     } else {
 
-      alert("Ocurrió un error, vuelve a intentarlo")
+      alert("Ocurrió un error, vuelve a intentarlo");
 
     }
 
+})
 
-});
+
+reiniciar.addEventListener("click", () => {
+
+    fondo = 0;
+    sumatoriaFondo = []
+    aniosFondo = []
+    DATA_COUNT = 0;
+    datosDona = []
+    rebootLabels();
+    rebootData();
+    rebootDona();
+    simulacion.classList.add('d-none');
+    
+
+})

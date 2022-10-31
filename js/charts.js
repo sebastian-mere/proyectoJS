@@ -1,15 +1,55 @@
+let DATA_COUNT;
+let labels = [];
+let datosDona = [];
 
-
-const DATA_COUNT = aniosFondo.length;
-const labels = [];
-
-
-
-for (let i = 1; i <= DATA_COUNT; ++i) {
-    labels.push(i.toString());
+function dataCount() {
+    for (let i = 1; i <= DATA_COUNT; ++i) {
+        labels.push(i.toString());
+    }
 }
 
-const data = {
+function rebootLabels() {
+    return labels = []
+}
+
+function rebootData() {
+    return data = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'fondo acumulado de retiro',
+                data: [],
+                borderColor: 'rgb(255, 99, 132)',
+                fill: false,
+                cubicInterpolationMode: 'monotone',
+                tension: 0.4
+            }
+        ]
+    };
+}
+
+function rebootDona() {
+    dataDona = {
+        labels: [
+            'Fondo de Retiro',
+            'Sueldo'
+        ],
+        datasets: [{
+            label: 'grafico dos',
+            data: [],
+            borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)'
+            ],
+            backgroundColor: 'rgb(255, 255, 255)',
+            hoverOffset: 4
+        }]
+    };
+}
+
+
+
+let data = {
     labels: labels,
     datasets: [
         {
@@ -23,21 +63,17 @@ const data = {
     ]
 };
 
-let datosDona = [100, 50, 150];
-
-const dataDona = {
+let dataDona = {
     labels: [
-        'Gastos',
-        'fondo de retiro',
-        'ahorro'
+        'Fondo de Retiro',
+        'Sueldo'
     ],
     datasets: [{
         label: 'grafico dos',
         data: datosDona,
         borderColor: [
             'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+            'rgb(54, 162, 235)'
         ],
         backgroundColor: 'rgb(255, 255, 255)',
         hoverOffset: 4
@@ -49,7 +85,7 @@ const config = {
     data: data,
     options: {
         responsive: true,
-        
+
         interaction: {
             intersect: false,
         },
@@ -79,12 +115,12 @@ const configDona = {
     data: dataDona,
 };
 
-const curva = new Chart(
+let curva = new Chart(
     document.getElementById('curva'),
     config
 );
 
-const torta = new Chart(
-    document.getElementById('torta'),
+const dona = new Chart(
+    document.getElementById('dona'),
     configDona
 );
