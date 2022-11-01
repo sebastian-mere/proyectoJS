@@ -13,6 +13,7 @@ let reiniciar = document.getElementById("reiniciar")
 let simulacion = document.getElementById("simulacion");
 
 
+
 function nuevoProspecto() {
 
     let nombre = document.getElementById("nombre").value;
@@ -66,11 +67,12 @@ function generarSimulacion() {
     montoSellado.innerHTML = "$ " + sellado.toFixed(2);
     datosDona.push(prospecto.aporte)
     datosDona.push(prospecto.getSueldo())
-    DATA_COUNT = aniosFondo.length;
     simulacion.classList.remove('d-none');
+    DATA_COUNT = aniosFondo.length;
 }
 
 function validacion() {
+    
 
     return true;
 }
@@ -111,6 +113,5 @@ reiniciar.addEventListener("click", () => {
     rebootData();
     rebootDona();
     simulacion.classList.add('d-none');
-    
 
 })
