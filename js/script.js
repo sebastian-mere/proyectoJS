@@ -73,10 +73,10 @@ function generarSimulacion() {
 
 function validacion() {
     
-    return true;
+   return true;
 }
 
-simular.addEventListener("click", () => {
+simular.addEventListener("click", (e) => {
 
     if (validacion()){
 
@@ -96,12 +96,15 @@ simular.addEventListener("click", () => {
     
     updateConfigDona(dona);
 
+    document.getElementById("simular").disabled = true;
+
     } else {
 
       alert("Ocurrió un error, vuelve a intentarlo");
 
     }
 
+    e.preventDefault()
 })
 
 
@@ -116,6 +119,8 @@ reiniciar.addEventListener("click", () => {
     rebootData();
     rebootDona();
     simulacion.classList.add('d-none');
+
+    document.getElementById("simular").disabled = false;
 
 })
 
