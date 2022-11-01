@@ -73,7 +73,6 @@ function generarSimulacion() {
 
 function validacion() {
     
-
     return true;
 }
 
@@ -92,6 +91,10 @@ simular.addEventListener("click", () => {
     generarSimulacion();
 
     dataCount();
+
+    updateConfig(curva);
+    
+    updateConfigDona(dona);
 
     } else {
 
@@ -115,3 +118,4 @@ reiniciar.addEventListener("click", () => {
     simulacion.classList.add('d-none');
 
 })
+

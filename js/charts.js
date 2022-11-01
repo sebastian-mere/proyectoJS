@@ -47,8 +47,6 @@ function rebootDona() {
     };
 }
 
-
-
 let data = {
     labels: labels,
     datasets: [
@@ -80,7 +78,7 @@ let dataDona = {
     }]
 };
 
-const config = {
+let config = {
     type: 'line',
     data: data,
     options: {
@@ -109,6 +107,20 @@ const config = {
         }
     },
 };
+
+function updateConfig(chart) {
+
+    config.data = data
+    
+    chart.update()
+}
+
+function updateConfigDona(chart) {
+
+    configDona.data = dataDona
+    
+    chart.update()
+}
 
 const configDona = {
     type: 'doughnut',
