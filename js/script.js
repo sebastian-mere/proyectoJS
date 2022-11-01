@@ -61,46 +61,44 @@ function busquedaSellado() {
 }
 
 function generarSimulacion() {
-    nombreTitulo.innerHTML = prospecto.nombre;
-    inversion.innerHTML = "$ " + prospecto.aporte;
-    capital.innerHTML = "$ " + fondo.toFixed(2);
-    montoSellado.innerHTML = "$ " + sellado.toFixed(2);
+
+    calcularFondos();
+    calcularAnios();
+    busquedaSellado();
+
     datosDona.push(prospecto.aporte)
     datosDona.push(prospecto.getSueldo())
     simulacion.classList.remove('d-none');
     DATA_COUNT = aniosFondo.length;
+
+    dataCount();
+    updateConfig(curva);
+    updateConfigDona(dona);
+
+    nombreTitulo.innerHTML = prospecto.nombre;
+    inversion.innerHTML = "$ " + prospecto.aporte;
+    capital.innerHTML = "$ " + fondo.toFixed(2);
+    montoSellado.innerHTML = "$ " + sellado.toFixed(2);
 }
 
 function validacion() {
-    
-   return true;
+
+    return true;
 }
 
 simular.addEventListener("click", (e) => {
 
-    if (validacion()){
+    if (validacion()) {
 
-    nuevoProspecto();
+        nuevoProspecto();
 
-    calcularFondos();
+        generarSimulacion();
 
-    calcularAnios();
-
-    busquedaSellado();
-
-    generarSimulacion();
-
-    dataCount();
-
-    updateConfig(curva);
-    
-    updateConfigDona(dona);
-
-    document.getElementById("simular").disabled = true;
+        document.getElementById("simular").disabled = true;
 
     } else {
 
-      alert("Ocurrió un error, vuelve a intentarlo");
+        alert("Ocurrió un error, vuelve a intentarlo");
 
     }
 

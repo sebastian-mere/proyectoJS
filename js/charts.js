@@ -47,6 +47,20 @@ function rebootDona() {
     };
 }
 
+function updateConfig(chart) {
+
+    config.data = data
+
+    chart.update()
+}
+
+function updateConfigDona(chart) {
+
+    configDona.data = dataDona
+
+    chart.update()
+}
+
 let data = {
     labels: labels,
     datasets: [
@@ -107,20 +121,6 @@ let config = {
         }
     },
 };
-
-function updateConfig(chart) {
-
-    config.data = data
-    
-    chart.update()
-}
-
-function updateConfigDona(chart) {
-
-    configDona.data = dataDona
-    
-    chart.update()
-}
 
 const configDona = {
     type: 'doughnut',

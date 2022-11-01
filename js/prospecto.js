@@ -7,27 +7,27 @@ class Prospecto {
         this.aporte = parseInt(aporte);
         this.anios = parseInt(anios);
         this.provincia = provincia.toLowerCase();
-        
+
         this.anioCorriente = new Date();
         this.edad = (this.anioCorriente.getFullYear() - this.anioNac);
         this.meses = (this.anios * 12);
         this.edadRetiro = (this.edad + this.anios);
-        this.sueldo = ((100 * this.aporte)/15)
+        this.sueldo = ((100 * this.aporte) / 15)
     }
 
-    getProvincia(){
+    getProvincia() {
         return this.provincia;
     }
 
-    getMeses(){
+    getMeses() {
         return this.meses;
     }
 
-    getEdadRetiro(){
+    getEdadRetiro() {
         return this.edadRetiro;
     }
 
-    getSueldo(){
+    getSueldo() {
         return this.sueldo;
     }
 }
