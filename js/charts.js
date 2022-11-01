@@ -18,7 +18,7 @@ function rebootData() {
         datasets: [
             {
                 label: 'fondo acumulado de retiro',
-                data: [],
+                data: aniosFondo,
                 borderColor: 'rgb(255, 99, 132)',
                 fill: false,
                 cubicInterpolationMode: 'monotone',
@@ -36,7 +36,7 @@ function rebootDona() {
         ],
         datasets: [{
             label: 'grafico dos',
-            data: [],
+            data: datosDona,
             borderColor: [
                 'rgb(255, 99, 132)',
                 'rgb(54, 162, 235)'
