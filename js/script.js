@@ -1,3 +1,5 @@
+// Variables necesarias para el funcionamiento de la simulación
+
 let prospecto
 let sellado
 let fondo = 0;
@@ -13,6 +15,7 @@ let reiniciar = document.getElementById("reiniciar")
 let simulacion = document.getElementById("simulacion");
 
 
+// Generación del nuevo prospecto desde el formulario
 
 function nuevoProspecto() {
 
@@ -27,6 +30,9 @@ function nuevoProspecto() {
 
     localStorage.setItem("sim", JSON.stringify(prospecto))
 }
+
+
+// Calculo de interés compuesto
 
 function calcularFondos() {
 
@@ -44,12 +50,18 @@ function calcularFondos() {
     }
 }
 
+
+// Calculo de lo acumulado cada año para mostrar en el gráfico
+
 function calcularAnios() {
 
     for (let i = 11; i <= sumatoriaFondo.length; i = i + 12) {
         aniosFondo.push(sumatoriaFondo[i])
     }
 }
+
+
+// Busqueda del valor de sellado en el array "selladoProvincia"
 
 function busquedaSellado() {
 
@@ -60,6 +72,9 @@ function busquedaSellado() {
     return sellado;
 
 }
+
+
+// Calculo de los elementos necesarios, generación de gráficos y mostrado de los valores en la sección "simulacion"
 
 function generarSimulacion() {
 
@@ -82,10 +97,29 @@ function generarSimulacion() {
     montoSellado.innerHTML = "$ " + sellado.toFixed(2);
 }
 
+
+// *PENDIENTE* Validaciones del formulario 
+
 function validacion() {
 
     return true;
 }
+
+
+// Si hay un prospecto guardado en localStorage se genera la simulación
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    if (localStorage.getItem('sim')) {
+        prospecto = JSON.parse(localStorage.getItem('sim'))
+
+        generarSimulacion();
+        document.getElementById("simular").disabled = true;
+    }
+})
+
+
+// Botón "simular" : genera prospecto, genera simulación y luego desactiva el botón 
 
 simular.addEventListener("click", (e) => {
 
@@ -107,15 +141,7 @@ simular.addEventListener("click", (e) => {
 })
 
 
-document.addEventListener('DOMContentLoaded', () => {
-
-    if (localStorage.getItem('sim')) {
-        prospecto = JSON.parse(localStorage.getItem('sim'))
-        
-        generarSimulacion();
-        document.getElementById("simular").disabled = true;
-    }
-})
+// Botón "Reset" : reseteo de todas las variables, ocultado de la sección "simulacion", borrado de localStorage y habilitación del botón "simular"
 
 reiniciar.addEventListener("click", () => {
 
