@@ -15,19 +15,4 @@ class Prospecto {
         this.sueldo = ((100 * this.aporte) / 15)
     }
 
-    getProvincia() {
-        return this.provincia;
-    }
-
-    getMeses() {
-        return this.meses;
-    }
-
-    getEdadRetiro() {
-        return this.edadRetiro;
-    }
-
-    getSueldo() {
-        return this.sueldo;
-    }
 }

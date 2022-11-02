@@ -25,11 +25,12 @@ function nuevoProspecto() {
 
     prospecto = new Prospecto(nombre, email, anioNac, aporte, anios, provincia);
 
+    localStorage.setItem("sim", JSON.stringify(prospecto))
 }
 
 function calcularFondos() {
 
-    for (let i = 1; i <= prospecto.getMeses(); i++) {
+    for (let i = 1; i <= prospecto.meses; i++) {
 
         if (i <= 1) {
             fondo = prospecto.aporte
@@ -52,7 +53,7 @@ function calcularAnios() {
 
 function busquedaSellado() {
 
-    let busqueda = selladoProvincia.find((e) => e.provincia === prospecto.getProvincia());
+    let busqueda = selladoProvincia.find((e) => e.provincia === prospecto.provincia);
 
     sellado = busqueda.sellado + prospecto.aporte;
 
@@ -67,7 +68,7 @@ function generarSimulacion() {
     busquedaSellado();
 
     datosDona.push(prospecto.aporte)
-    datosDona.push(prospecto.getSueldo())
+    datosDona.push(prospecto.sueldo)
     simulacion.classList.remove('d-none');
     DATA_COUNT = aniosFondo.length;
 
@@ -106,6 +107,16 @@ simular.addEventListener("click", (e) => {
 })
 
 
+document.addEventListener('DOMContentLoaded', () => {
+
+    if (localStorage.getItem('sim')) {
+        prospecto = JSON.parse(localStorage.getItem('sim'))
+        
+        generarSimulacion();
+        document.getElementById("simular").disabled = true;
+    }
+})
+
 reiniciar.addEventListener("click", () => {
 
     fondo = 0;
@@ -117,7 +128,7 @@ reiniciar.addEventListener("click", () => {
     rebootData();
     rebootDona();
     simulacion.classList.add('d-none');
-
+    localStorage.removeItem('sim')
     document.getElementById("simular").disabled = false;
 
 })
