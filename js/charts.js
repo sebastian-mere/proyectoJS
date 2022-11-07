@@ -32,7 +32,7 @@ function rebootDona() {
     dataDona = {
         labels: [
             'Fondo de Retiro',
-            'Sueldo'
+            'Ingresos'
         ],
         datasets: [{
             label: 'grafico dos',
@@ -42,7 +42,7 @@ function rebootDona() {
                 'rgb(54, 162, 235)'
             ],
             backgroundColor: 'rgb(255, 255, 255)',
-            hoverOffset: 4
+            hoverOffset: 1
         }]
     };
 }

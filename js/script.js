@@ -206,8 +206,7 @@ simular.addEventListener("click", (e) => {
 
         Toastify({
             text: "Algo salió mal, revisa el formulario y vuelve a intentarlo",
-            duration: 3000,
-            close: true,
+            duration: 2000,
             gravity: "top",
             position: "center",
             style: {
