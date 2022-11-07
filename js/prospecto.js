@@ -8,8 +8,8 @@ class Prospecto {
         this.anios = parseInt(anios);
         this.provincia = provincia.toLowerCase();
 
-        this.anioCorriente = new Date();
-        this.edad = (this.anioCorriente.getFullYear() - this.anioNac);
+        
+        this.edad = (anioCorriente.getFullYear() - this.anioNac);
         this.meses = (this.anios * 12);
         this.edadRetiro = (this.edad + this.anios);
         this.sueldo = ((100 * this.aporte) / 15)

@@ -1,30 +1,42 @@
 // Variables necesarias para el funcionamiento de la simulación
-
+let anioCorriente = new Date();
 let prospecto
 let sellado
 let fondo = 0;
 let sumatoriaFondo = []
 let aniosFondo = []
-let nombreTitulo = document.getElementById("nombreTitulo");
-let inversion = document.getElementById("inversion");
-let capital = document.getElementById("capital");
-let montoSellado = document.getElementById("sellado");
 
-let simular = document.getElementById("simular");
-let reiniciar = document.getElementById("reiniciar")
-let simulacion = document.getElementById("simulacion");
+// Función para simplificar la escritura de getElementById
+
+let id = (id) => document.getElementById(id);
+
+
+let nombreTitulo = id("nombreTitulo");
+let inversion = id("inversion");
+let capital = id("capital");
+let montoSellado = id("sellado");
+let msgNombre = id("msgNombre")
+let msgEmail = id("msgEmail")
+let msgProvincia = id("msgProvincia")
+let msgAnioNac = id("msgAnioNac")
+let msgAporte = id("msgAporte")
+let msgAnios = id("msgAnios")
+
+let simular = id("simular");
+let reiniciar = id("reiniciar")
+let simulacion = id("simulacion");
 
 
 // Generación del nuevo prospecto desde el formulario
 
 function nuevoProspecto() {
 
-    let nombre = document.getElementById("nombre").value;
-    let email = document.getElementById("email").value;
-    let provincia = document.getElementById("provincia").value;
-    let anioNac = parseInt(document.getElementById("anioNac").value);
-    let aporte = parseInt(document.getElementById("aporte").value);
-    let anios = parseInt(document.getElementById("anios").value);
+    let nombre = id("nombre").value;
+    let email = id("email").value;
+    let provincia = id("provincia").value;
+    let anioNac = parseInt(id("anioNac").value);
+    let aporte = parseInt(id("aporte").value);
+    let anios = parseInt(id("anios").value);
 
     prospecto = new Prospecto(nombre, email, anioNac, aporte, anios, provincia);
 
@@ -102,8 +114,67 @@ function generarSimulacion() {
 
 function validacion() {
 
-    return true;
+    msgNombre.innerHTML = ""
+    msgEmail.innerHTML = ""
+    msgProvincia.innerHTML = ""
+    msgAnioNac.innerHTML = ""
+    msgAporte.innerHTML = ""
+    msgAnios.innerHTML = ""
+
+    let validacionNombre = id("nombre").value;
+    let validacionEmail = id("email").value;
+    let validacionProvincia = id("provincia").value;
+    let validacionAnioNac = parseInt(id("anioNac").value);
+    let validacionAporte = parseInt(id("aporte").value);
+    let validacionAnios = parseInt(id("anios").value);
+
+
+    if (isNaN(validacionNombre)) {
+        validacionNombre = true
+    } else {
+        msgNombre.innerHTML = "Debes ingresar un nombre"
+    };
+
+    if (/^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/.test(validacionEmail)) {
+        validacionEmail = true;
+    } else {
+        msgEmail.innerHTML = "Debes ingresar un email válido"
+    }
+
+    if (validacionProvincia) {
+        validacionProvincia = true
+    } else {
+        msgProvincia.innerHTML = "Debes seleccionar una provincia"
+    }
+
+    if (!(/^\d{4}$/.test(validacionAnioNac))) {
+        msgAnioNac.innerHTML = "Debes ingresar un año válido"
+        
+    } else if ((anioCorriente.getFullYear() - validacionAnioNac) < 18){
+        msgAnioNac.innerHTML = "Debes ser mayor de edad"
+
+    } else {
+        validacionAnioNac = true;
+
+    }
+    
+    if (validacionAporte > 0) {
+        validacionAporte = true;
+    } else {
+        msgAporte.innerHTML = "Debes ingresar una cantidad mayor a 0, idealmente el aporte debería ser el 15% de tus ingresos"
+    }
+
+    if (validacionAnios > 0) {
+        validacionAnios = true;
+    } else {
+        msgAnios.innerHTML = "Debes ingresar una cantidad mayor a 0, lo recomendable es aportar un mínimo de 10 años"
+    }
+
+    if (validacionNombre === validacionEmail === validacionProvincia === validacionAnioNac === validacionAporte === validacionAnios){
+        return true;
+    }
 }
+
 
 
 // Si hay un prospecto guardado en localStorage se genera la simulación
@@ -114,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         prospecto = JSON.parse(localStorage.getItem('sim'))
 
         generarSimulacion();
-        document.getElementById("simular").disabled = true;
+        simular.disabled = true;
     }
 })
 
@@ -129,15 +200,23 @@ simular.addEventListener("click", (e) => {
 
         generarSimulacion();
 
-        document.getElementById("simular").disabled = true;
+        simular.disabled = true;
 
     } else {
 
-        alert("Ocurrió un error, vuelve a intentarlo");
+        Toastify({
+            text: "Algo salió mal, revisa el formulario y vuelve a intentarlo",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            style: {
+              background: "linear-gradient(to right, #B91372, #6B0F1A)",
+            },
+          }).showToast();
 
     }
 
-    e.preventDefault()
 })
 
 
@@ -155,7 +234,7 @@ reiniciar.addEventListener("click", () => {
     rebootDona();
     simulacion.classList.add('d-none');
     localStorage.removeItem('sim')
-    document.getElementById("simular").disabled = false;
+    simular.disabled = false;
 
 })
 
