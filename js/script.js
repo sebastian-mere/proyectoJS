@@ -6,10 +6,15 @@ let fondo = 0;
 let sumatoriaFondo = []
 let aniosFondo = []
 
+
+
 // Función para simplificar la escritura de getElementById
 
 let id = (id) => document.getElementById(id);
 
+
+
+// Elementos llamados desde el HTML
 
 let nombreTitulo = id("nombreTitulo");
 let inversion = id("inversion");
@@ -27,6 +32,7 @@ let reiniciar = id("reiniciar")
 let simulacion = id("simulacion");
 
 
+
 // Generación del nuevo prospecto desde el formulario
 
 function nuevoProspecto() {
@@ -42,6 +48,7 @@ function nuevoProspecto() {
 
     localStorage.setItem("sim", JSON.stringify(prospecto))
 }
+
 
 
 // Calculo de interés compuesto
@@ -63,6 +70,7 @@ function calcularFondos() {
 }
 
 
+
 // Calculo de lo acumulado cada año para mostrar en el gráfico
 
 function calcularAnios() {
@@ -71,6 +79,7 @@ function calcularAnios() {
         aniosFondo.push(sumatoriaFondo[i])
     }
 }
+
 
 
 // Busqueda del valor de sellado en el array "selladoProvincia"
@@ -84,6 +93,7 @@ function busquedaSellado() {
     return sellado;
 
 }
+
 
 
 // Calculo de los elementos necesarios, generación de gráficos y mostrado de los valores en la sección "simulacion"
@@ -110,7 +120,8 @@ function generarSimulacion() {
 }
 
 
-// *PENDIENTE* Validaciones del formulario 
+
+// Validaciones del formulario
 
 function validacion() {
 
@@ -190,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
+
 // Botón "simular" : genera prospecto, genera simulación y luego desactiva el botón 
 
 simular.addEventListener("click", (e) => {
@@ -217,6 +229,7 @@ simular.addEventListener("click", (e) => {
     }
 
 })
+
 
 
 // Botón "Reset" : reseteo de todas las variables, ocultado de la sección "simulacion", borrado de localStorage y habilitación del botón "simular"
