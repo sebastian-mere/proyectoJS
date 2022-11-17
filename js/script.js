@@ -5,8 +5,7 @@ let sellado
 let fondo = 0;
 let sumatoriaFondo = []
 let aniosFondo = []
-let conversionAporte
-let conversionFondo
+
 
 
 // Función para simplificar la escritura de getElementById
@@ -93,22 +92,22 @@ function calcularAnios() {
         sellado = busqueda.sellado + prospecto.aporte;
         return sellado;
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error + "error, no se pudo cargar el valor del sellado"))
 }
 
-// Busqueda del valor del dolar oficial para hacer la conversión
+// Busqueda del valor del dolar oficial para hacer las conversiones
 
 
-function busquedaDolar(valor, conversion) {
+function busquedaDolar(valor) {
     
-    return fetch("https://api-dolar-argentina.herokuapp.com/api/dolaroficial")
+    return fetch("https://cors-solucion.herokuapp.com/https://api-dolar-argentina.herokuapp.com/api/dolaroficial")
     .then(resp =>  resp.json())
     .then((data) =>{
         let dolar = data.compra
         conversion = valor/dolar;
         return conversion;
     })
-    .catch(error => console.log("error, no se pudo cargar el valor del dolar"))
+    .catch(error => console.log(error + "error, no se pudo cargar el valor del dolar"))
 }
 
 // Calculo de los elementos necesarios, generación de gráficos y mostrado de los valores en la sección "simulacion"
@@ -131,12 +130,22 @@ async function generarSimulacion() {
     updateConfig(curva);
     updateConfigDona(dona);
 
-    await busquedaDolar(prospecto.aporte ,conversionAporte);
-    await busquedaDolar(fondo.toFixed(2) ,conversionFondo);
+    let conversionAporte = await busquedaDolar(prospecto.aporte);
+    let conversionFondo = await busquedaDolar(fondo);
+    
+    if (conversionAporte){
+        inversion.innerHTML = `$ ${prospecto.aporte.toFixed(2)} / u$s ${conversionAporte.toFixed(2)}`;
+    } else {
+        inversion.innerHTML = `$ ${prospecto.aporte.toFixed(2)}`;
+    }
+    
+    if (conversionFondo){
+        capital.innerHTML = `$ ${fondo.toFixed(2)} / u$s ${conversionFondo.toFixed(2)}` ;
+    } else {
+        capital.innerHTML = `$ ${fondo.toFixed(2)}` ;
+    }
 
     nombreTitulo.innerHTML = prospecto.nombre;
-    inversion.innerHTML = `$ ${prospecto.aporte} / u$s ${conversionAporte}`;
-    capital.innerHTML = `$ ${fondo.toFixed(2)} / u$s ${conversionFondo}` ;
     montoSellado.innerHTML = `$ ${sellado.toFixed(2)}`;
 }
 
@@ -171,40 +180,37 @@ function validacion() {
         validacionEmail = true;
     } else {
         msgEmail.innerHTML = "Debes ingresar un email válido"
-    }
+    };
 
     if (validacionProvincia) {
         validacionProvincia = true
     } else {
         msgProvincia.innerHTML = "Debes seleccionar una provincia"
-    }
+    };
 
     if (!(/^\d{4}$/.test(validacionAnioNac))) {
         msgAnioNac.innerHTML = "Debes ingresar un año válido"
-
     } else if ((anioCorriente.getFullYear() - validacionAnioNac) < 18) {
         msgAnioNac.innerHTML = "Debes ser mayor de edad"
-
     } else {
         validacionAnioNac = true;
-
-    }
+    };
 
     if (validacionAporte > 0) {
         validacionAporte = true;
     } else {
         msgAporte.innerHTML = "Debes ingresar una cantidad mayor a 0, idealmente el aporte debería ser el 15% de tus ingresos"
-    }
+    };
 
     if (validacionAnios > 0) {
         validacionAnios = true;
     } else {
         msgAnios.innerHTML = "Debes ingresar una cantidad mayor a 0, lo recomendable es aportar un mínimo de 10 años"
-    }
+    };
 
     if (validacionNombre === validacionEmail === validacionProvincia === validacionAnioNac === validacionAporte === validacionAnios) {
         return true;
-    }
+    };
 }
 
 
