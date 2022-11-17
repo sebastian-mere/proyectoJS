@@ -5,7 +5,8 @@ let sellado
 let fondo = 0;
 let sumatoriaFondo = []
 let aniosFondo = []
-
+let conversionAporte
+let conversionFondo
 
 
 // Función para simplificar la escritura de getElementById
@@ -59,11 +60,9 @@ function calcularFondos() {
 
         if (i <= 1) {
             fondo = prospecto.aporte
-            console.log(fondo)
             sumatoriaFondo.push(fondo)
         } else {
             fondo = (fondo + prospecto.aporte) * 1.008
-            console.log(fondo)
             sumatoriaFondo.push(fondo)
         }
     }
@@ -85,48 +84,41 @@ function calcularAnios() {
 // Busqueda del valor de sellado en json
 
 
-function busquedaSellado() {
-    fetch("js/sellado.json")
-    .then(resp => resp.json())
+ function busquedaSellado() {
+    
+    return fetch("js/sellado.json")
+    .then(resp =>  resp.json())
     .then((data) =>{
-        console.log((data.find(e => e.provincia === prospecto.provincia)).sellado)
         let busqueda = data.find(e => e.provincia === prospecto.provincia)
         sellado = busqueda.sellado + prospecto.aporte;
         return sellado;
     })
     .catch(error => console.log(error))
 }
-/*
-async function busquedaSellado() {
-    const resp = await fetch("js/sellado.json");
-    const data = await resp.json();
-    return data;
-    }
 
-    let busqueda = busquedaSellado();
+// Busqueda del valor del dolar oficial para hacer la conversión
 
-    busqueda.then(selladoProvincia => {
 
-        console.log(selladoProvincia);
-
-        selladoProvincia = selladoProvincia.find((e) => e.provincia === prospecto.provincia);
-        sellado = selladoProvincia.sellado + prospecto.aporte;
-        return sellado;
-
-    }).catch(error => {
-
-        console.log(error);
-
+function busquedaDolar(valor, conversion) {
+    
+    return fetch("https://api-dolar-argentina.herokuapp.com/api/dolaroficial")
+    .then(resp =>  resp.json())
+    .then((data) =>{
+        let dolar = data.compra
+        conversion = valor/dolar;
+        return conversion;
     })
-*/
+    .catch(error => console.log("error, no se pudo cargar el valor del dolar"))
+}
 
 // Calculo de los elementos necesarios, generación de gráficos y mostrado de los valores en la sección "simulacion"
 
-function generarSimulacion() {
+async function generarSimulacion() {
 
     simular.disabled = true;
 
-    busquedaSellado();
+    await busquedaSellado();
+
     calcularFondos();
     calcularAnios();
 
@@ -139,10 +131,13 @@ function generarSimulacion() {
     updateConfig(curva);
     updateConfigDona(dona);
 
+    await busquedaDolar(prospecto.aporte ,conversionAporte);
+    await busquedaDolar(fondo.toFixed(2) ,conversionFondo);
+
     nombreTitulo.innerHTML = prospecto.nombre;
-    inversion.innerHTML = "$ " + prospecto.aporte;
-    capital.innerHTML = "$ " + fondo.toFixed(2);
-    montoSellado.innerHTML = "$ " + sellado.toFixed(2);
+    inversion.innerHTML = `$ ${prospecto.aporte} / u$s ${conversionAporte}`;
+    capital.innerHTML = `$ ${fondo.toFixed(2)} / u$s ${conversionFondo}` ;
+    montoSellado.innerHTML = `$ ${sellado.toFixed(2)}`;
 }
 
 
@@ -234,11 +229,9 @@ simular.addEventListener("click", (e) => {
     if (validacion()) {
 
         nuevoProspecto();
-
         generarSimulacion();
 
     } else {
-
         Toastify({
             text: "Algo salió mal, revisa el formulario y vuelve a intentarlo",
             duration: 2000,
@@ -248,7 +241,6 @@ simular.addEventListener("click", (e) => {
                 background: "linear-gradient(to right, #B91372, #6B0F1A)",
             },
         }).showToast();
-
     }
 
 })
