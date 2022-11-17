@@ -1,4 +1,4 @@
-const selladoProvincia = [
+[
     { "provincia": "buenos aires", "sellado": 150 },
     { "provincia": "cordoba", "sellado": 200 },
     { "provincia": "santa fe", "sellado": 350 },
@@ -22,6 +22,5 @@ const selladoProvincia = [
     { "provincia": "la rioja", "sellado": 250 },
     { "provincia": "la pampa", "sellado": 150 },
     { "provincia": "santa cruz", "sellado": 220 },
-    { "provincia": "tierra del fuego", "sellado": 180 },
+    { "provincia": "tierra del fuego", "sellado": 180 }
 ]
-

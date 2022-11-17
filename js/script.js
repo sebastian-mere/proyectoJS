@@ -82,27 +82,53 @@ function calcularAnios() {
 
 
 
-// Busqueda del valor de sellado en el array "selladoProvincia"
+// Busqueda del valor de sellado en json
+
 
 function busquedaSellado() {
-
-    let busqueda = selladoProvincia.find((e) => e.provincia === prospecto.provincia);
-
-    sellado = busqueda.sellado + prospecto.aporte;
-
-    return sellado;
-
+    fetch("js/sellado.json")
+    .then(resp => resp.json())
+    .then((data) =>{
+        console.log((data.find(e => e.provincia === prospecto.provincia)).sellado)
+        let busqueda = data.find(e => e.provincia === prospecto.provincia)
+        sellado = busqueda.sellado + prospecto.aporte;
+        return sellado;
+    })
+    .catch(error => console.log(error))
 }
+/*
+async function busquedaSellado() {
+    const resp = await fetch("js/sellado.json");
+    const data = await resp.json();
+    return data;
+    }
 
+    let busqueda = busquedaSellado();
 
+    busqueda.then(selladoProvincia => {
+
+        console.log(selladoProvincia);
+
+        selladoProvincia = selladoProvincia.find((e) => e.provincia === prospecto.provincia);
+        sellado = selladoProvincia.sellado + prospecto.aporte;
+        return sellado;
+
+    }).catch(error => {
+
+        console.log(error);
+
+    })
+*/
 
 // Calculo de los elementos necesarios, generación de gráficos y mostrado de los valores en la sección "simulacion"
 
 function generarSimulacion() {
 
+    simular.disabled = true;
+
+    busquedaSellado();
     calcularFondos();
     calcularAnios();
-    busquedaSellado();
 
     datosDona.push(prospecto.aporte)
     datosDona.push(prospecto.sueldo)
@@ -160,15 +186,15 @@ function validacion() {
 
     if (!(/^\d{4}$/.test(validacionAnioNac))) {
         msgAnioNac.innerHTML = "Debes ingresar un año válido"
-        
-    } else if ((anioCorriente.getFullYear() - validacionAnioNac) < 18){
+
+    } else if ((anioCorriente.getFullYear() - validacionAnioNac) < 18) {
         msgAnioNac.innerHTML = "Debes ser mayor de edad"
 
     } else {
         validacionAnioNac = true;
 
     }
-    
+
     if (validacionAporte > 0) {
         validacionAporte = true;
     } else {
@@ -181,7 +207,7 @@ function validacion() {
         msgAnios.innerHTML = "Debes ingresar una cantidad mayor a 0, lo recomendable es aportar un mínimo de 10 años"
     }
 
-    if (validacionNombre === validacionEmail === validacionProvincia === validacionAnioNac === validacionAporte === validacionAnios){
+    if (validacionNombre === validacionEmail === validacionProvincia === validacionAnioNac === validacionAporte === validacionAnios) {
         return true;
     }
 }
@@ -196,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
         prospecto = JSON.parse(localStorage.getItem('sim'))
 
         generarSimulacion();
-        simular.disabled = true;
     }
 })
 
@@ -212,8 +237,6 @@ simular.addEventListener("click", (e) => {
 
         generarSimulacion();
 
-        simular.disabled = true;
-
     } else {
 
         Toastify({
@@ -222,9 +245,9 @@ simular.addEventListener("click", (e) => {
             gravity: "top",
             position: "center",
             style: {
-              background: "linear-gradient(to right, #B91372, #6B0F1A)",
+                background: "linear-gradient(to right, #B91372, #6B0F1A)",
             },
-          }).showToast();
+        }).showToast();
 
     }
 
