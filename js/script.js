@@ -188,7 +188,7 @@ function validacion() {
         msgProvincia.innerHTML = "Debes seleccionar una provincia"
     };
 
-    if (!(/^\d{4}$/.test(validacionAnioNac))) {
+    if (!(/^\d{4}$/.test(validacionAnioNac) && validacionAnioNac > 1900 )) {
         msgAnioNac.innerHTML = "Debes ingresar un año válido"
     } else if ((anioCorriente.getFullYear() - validacionAnioNac) < 18) {
         msgAnioNac.innerHTML = "Debes ser mayor de edad"
@@ -196,16 +196,16 @@ function validacion() {
         validacionAnioNac = true;
     };
 
-    if (validacionAporte > 0) {
+    if (validacionAporte > 0 && validacionAporte < 1000000) {
         validacionAporte = true;
     } else {
-        msgAporte.innerHTML = "Debes ingresar una cantidad mayor a 0, idealmente el aporte debería ser el 15% de tus ingresos"
+        msgAporte.innerHTML = "Debes ingresar una cantidad válida, idealmente el aporte debería ser el 15% de tus ingresos"
     };
 
-    if (validacionAnios > 0) {
+    if (validacionAnios > 0 && validacionAnios < 50) {
         validacionAnios = true;
     } else {
-        msgAnios.innerHTML = "Debes ingresar una cantidad mayor a 0, lo recomendable es aportar un mínimo de 10 años"
+        msgAnios.innerHTML = "Debes ingresar una cantidad válida, lo recomendable es aportar un mínimo de 10 años"
     };
 
     if (validacionNombre === validacionEmail === validacionProvincia === validacionAnioNac === validacionAporte === validacionAnios) {
