@@ -204,7 +204,7 @@ function validacion() {
         msgAporte.innerHTML = "Debes ingresar una cantidad válida, idealmente el aporte debería ser el 15% de tus ingresos"
     };
 
-    if (validacionAnios > 0 && validacionAnios <= 50) {
+    if (validacionAnios > 1 && validacionAnios <= 50) {
         validacionAnios = true;
     } else {
         msgAnios.innerHTML = "Debes ingresar una cantidad válida, lo recomendable es aportar entre 10 y 40 años"
