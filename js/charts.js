@@ -54,7 +54,7 @@ function rebootDona() {
     dataDona = {
         labels: [
             'Fondo de Retiro',
-            'Ingresos'
+            'Ingresos estimados'
         ],
         datasets: [{
             label: 'grafico dos',
@@ -90,7 +90,7 @@ let data = {
 let dataDona = {
     labels: [
         'Fondo de Retiro',
-        'Sueldo'
+        'Ingresos estimados'
     ],
     datasets: [{
         label: 'grafico dos',
