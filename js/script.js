@@ -82,7 +82,6 @@ function calcularAnios() {
 
 // Busqueda del valor de sellado en json
 
-
  function busquedaSellado() {
     
     return fetch("js/sellado.json")
@@ -95,8 +94,9 @@ function calcularAnios() {
     .catch(error => console.log(error + "error, no se pudo cargar el valor del sellado"))
 }
 
-// Busqueda del valor del dolar oficial para hacer las conversiones
 
+
+// Busqueda del valor del dolar oficial para hacer las conversiones
 
 function busquedaDolar(valor) {
     
@@ -109,6 +109,8 @@ function busquedaDolar(valor) {
     })
     .catch(error => console.log(error + "error, no se pudo cargar el valor del dolar"))
 }
+
+
 
 // Calculo de los elementos necesarios, generación de gráficos y mostrado de los valores en la sección "simulacion"
 
@@ -202,10 +204,10 @@ function validacion() {
         msgAporte.innerHTML = "Debes ingresar una cantidad válida, idealmente el aporte debería ser el 15% de tus ingresos"
     };
 
-    if (validacionAnios > 0 && validacionAnios < 50) {
+    if (validacionAnios > 0 && validacionAnios <= 50) {
         validacionAnios = true;
     } else {
-        msgAnios.innerHTML = "Debes ingresar una cantidad válida, lo recomendable es aportar un mínimo de 10 años"
+        msgAnios.innerHTML = "Debes ingresar una cantidad válida, lo recomendable es aportar entre 10 y 40 años"
     };
 
     if (validacionNombre === validacionEmail === validacionProvincia === validacionAnioNac === validacionAporte === validacionAnios) {

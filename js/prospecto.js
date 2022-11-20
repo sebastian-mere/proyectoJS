@@ -1,3 +1,5 @@
+// Clase para generación de los posibles prospectos
+
 class Prospecto {
     constructor(nombre, email, anioNac, aporte, anios, provincia) {
 

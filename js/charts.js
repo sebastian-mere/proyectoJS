@@ -2,11 +2,33 @@ let DATA_COUNT;
 let labels = [];
 let datosDona = [];
 
+
+
+// Funcionalidad de los gráficos
+
 function dataCount() {
     for (let i = 1; i <= DATA_COUNT; ++i) {
         labels.push(i.toString());
     }
 }
+
+function updateConfig(chart) {
+
+    config.data = data
+
+    chart.update()
+}
+
+function updateConfigDona(chart) {
+
+    configDona.data = dataDona
+
+    chart.update()
+}
+
+
+
+// Funciones para resetear los gráficos
 
 function rebootLabels() {
     return labels = []
@@ -47,19 +69,9 @@ function rebootDona() {
     };
 }
 
-function updateConfig(chart) {
 
-    config.data = data
 
-    chart.update()
-}
-
-function updateConfigDona(chart) {
-
-    configDona.data = dataDona
-
-    chart.update()
-}
+// Configuración de los gráficos
 
 let data = {
     labels: labels,

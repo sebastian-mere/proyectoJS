@@ -20,6 +20,8 @@
 
 <body>
 
+<!-- Header -->
+
 	<header class="bg-dark">
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-dark">
@@ -32,13 +34,13 @@
 					<div class="collapse navbar-collapse" id="navbarNav">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="#">Inicio</a>
+								<a class="nav-link" href="#cap">Construcción de capital</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Asesoría</a>
+								<a class="nav-link" href="#sim">Simulador de plan financiero</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Contacto</a>
+								<a class="nav-link" href="https://api.whatsapp.com/send?phone=5491169334207" target="_blank">Contacto</a>
 							</li>
 						</ul>
 					</div>
@@ -47,15 +49,19 @@
 		</div>
 	</header>
 
+<!-- Main -->
+
 	<main>
-		<div class="container col-xxl-8 px-4 py-5">
+		<img src="img/finanzas-personales.jpg" class="img-fluid" alt="Imagen sobre finanzas personales">
+
+		<div class="container col-xxl-8 px-4 py-3" id="cap">
 			<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
 				<div class="col-10 col-sm-8 col-lg-6">
-					<img src="img/finanzas.webp" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700"
+					<img src="img/finanzas.webp" class="d-block mx-lg-auto img-fluid" alt="Imagen sobre finanzas" width="700"
 						height="500" loading="lazy">
 				</div>
 				<div class="col-lg-6">
-					<h1 class="display-5 fw-bold lh-1 mb-3">Lorem ipsum dolor sit amet consectetur</h1>
+					<h1 class="display-5 fw-bold lh-1 mb-3">Construcción de capital</h1>
 					<p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit explicabo, doloribus
 						atque
 						facilis quidem quae, ea ipsa repudiandae corrupti quis nam tempora saepe aperiam commodi
@@ -65,6 +71,23 @@
 						<a type="button" class="btn btn-warning btn-lg px-4 me-md-2" href="#sim">Simulador Online</a>
 						<a type="button" class="btn btn-outline-warning btn-lg px-4" href="https://api.whatsapp.com/send?phone=5491169334207" target="_blank">Ponerse en contacto</a>
 					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container col-xxl-8 px-4 pb-5">
+			<div class="row align-items-center">
+				<div class="col-12">
+					<h2>Interés simple vs compuesto</h2>
+					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit explicabo, doloribus
+						atque
+						facilis quidem quae, ea ipsa repudiandae corrupti quis nam tempora saepe aperiam commodi
+						dignissimos dolor
+						veniam corporis reiciendis.</p>
+				</div>
+				<div class="col-12">
+					<img src="img/interes-compuesto.webp" class="d-block mx-lg-auto img-fluid" alt="Imagen sobre interés compuesto" width="700"
+						height="500" loading="lazy">
 				</div>
 			</div>
 		</div>
@@ -154,21 +177,23 @@
 
 		<article class="container col-xxl-8 px-4 py-5 d-none" id="simulacion">
 			<div class="row">
-				<h2 class="pb-3">Plan Financiero Personal - <span id="nombreTitulo"></span></h2>
-				<p class="col-6 pb-3">Inversión mensual <strong id="inversion">0000</strong></p>
-				<p class="col-6 pb-3">Capital final <strong id="capital">0000</strong></p>
-				<div class="col-4">
+				<h2 class="col-12 pb-3">Plan Financiero Personal - <span id="nombreTitulo"></span></h2>
+				<p class="col-12 col-md-6 pb-3">Inversión mensual <strong id="inversion">0000</strong></p>
+				<p class="col-12 col-md-6 pb-3">Capital final <strong id="capital">0000</strong></p>
+				<div class="col-12 col-md-4">
 					<canvas id="dona"></canvas>
 				</div>
-				<div class="col-8">
+				<div class="col-12 col-md-8">
 					<canvas id="curva"></canvas>
 				</div>
-				<p class="text-center py-5">ⓘ Recuerda que la primera cuota será de <strong id="sellado">0000</strong>
+				<p class="col-12 text-center py-5">ⓘ Recuerda que la primera cuota será de <strong id="sellado">0000</strong>
 					debido a las tazas de sellado de tu privincia</p>
 			</div>
 		</article>
 
 	</main>
+
+<!-- Footer -->
 
 	<footer class="bg-dark text-center text-white">
 		<div class="container p-4">
