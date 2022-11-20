@@ -84,7 +84,7 @@ function calcularAnios() {
 
  function busquedaSellado() {
     
-    return fetch("js/sellado.json")
+    return fetch("db/sellado.json")
     .then(resp =>  resp.json())
     .then((data) =>{
         let busqueda = data.find(e => e.provincia === prospecto.provincia)
